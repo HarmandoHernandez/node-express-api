@@ -1,0 +1,25 @@
+### With content
+POST http://localhost:3000/api/notes/
+Content-Type: application/json; charset=utf-8
+
+{
+    "content": "Me tengo que desuscribir de @midudev en Youtube"
+}
+
+### With content and important
+POST http://localhost:3000/api/notes/
+Content-Type: application/json; charset=utf-8
+
+{
+    "content": "Me tengo que desuscribir de @midudev en Youtube",
+    "important": true
+}
+
+### Empty
+POST http://localhost:3000/api/notes/
+Content-Type: application/json; charset=utf-8
+
+{}
+
+### No found
+POST http://localhost:3000/api/notes/99

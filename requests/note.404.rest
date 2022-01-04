@@ -1,0 +1,7 @@
+GET http://localhost:3000/api/notessds
+
+###
+DELETE http://localhost:3000/api/notessds
+
+###
+POST http://localhost:3000/api/notessds
