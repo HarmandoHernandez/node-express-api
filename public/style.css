@@ -1,0 +1,105 @@
+.body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+
+  font-family: "Courier New", Courier, monospace;
+}
+
+.clock {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 320px;
+  height: 320px;
+
+  border: 20px solid #000;
+  border-radius: 50%;
+  background-color: rgb(253, 253, 243);
+}
+
+.clock::before {
+  content: "PAST";
+  position: absolute;
+  top: 70px;
+  left: 55px;
+  transform: rotate(45deg);
+
+  color: gray;
+  letter-spacing: 3px;
+
+  opacity: 0.5;
+}
+
+.clock::after {
+  content: "FUTURE";
+  position: absolute;
+  top: 70px;
+  right: 50px;
+  transform: rotate(-45deg);
+
+  color: gray;
+  letter-spacing: 3px;
+
+  opacity: 0.5;
+}
+
+.clock__hour {
+  font-size: 3em;
+}
+
+.clock__min {
+  font-size: 2em;
+}
+
+.clock__days > span {
+  display: none;
+
+  font-size: 1em;
+}
+
+.clock__present {
+  position: absolute;
+  bottom: 60px;
+
+  transform: rotate(-90deg);
+
+  letter-spacing: 3px;
+  font-size: 1.5em;
+  color: red;
+}
+
+.clock__seconds-indicator {
+  position: absolute;
+  left: 50%;
+  bottom: 50%;
+
+  width: 6px;
+  height: 6px;
+  z-index: 2;
+  transform: rotate(0deg);
+
+  background-color: #000;
+  border-radius: 50%;
+}
+
+.clock__seconds-indicator::before {
+  content: "";
+  position: absolute;
+  bottom: 5px;
+  left: 2px;
+
+  width: 2px;
+  height: 150px;
+
+  background-color: red;
+  clip-path: polygon(50% 0%, 0% 5%, 0% 100%, 100% 100%, 100% 5%, 50% 0%);
+}
+
+.full-date {
+  position: absolute;
+  bottom: 3em;
+}

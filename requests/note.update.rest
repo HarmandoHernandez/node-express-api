@@ -1,5 +1,5 @@
 ### With content
-POST http://localhost:3000/api/notes/
+PUT http://localhost:3000/api/notes/
 Content-Type: application/json; charset=utf-8
 
 {
@@ -7,19 +7,19 @@ Content-Type: application/json; charset=utf-8
 }
 
 ### With content and important
-POST http://localhost:3000/api/notes/
+PUT http://localhost:3000/api/notes/61dddab130e170055fe1eaeb
 Content-Type: application/json; charset=utf-8
 
 {
-    "content": "Tengo que estudiar las clases del Fullstack Bootcampo",
+    "content": "Hola mundo",
     "important": true
 }
 
 ### Empty
-POST http://localhost:3000/api/notes/
+PUT http://localhost:3000/api/notes/
 Content-Type: application/json; charset=utf-8
 
 {}
 
 ### No found
-POST http://localhost:3000/api/notes/99
+PUT http://localhost:3000/api/notes/99

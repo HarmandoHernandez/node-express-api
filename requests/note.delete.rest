@@ -1,4 +1,4 @@
-DELETE http://localhost:3000/api/notes/2
+DELETE http://localhost:3000/api/notes/61ddf5b7d1c8c9d90602cb8f
 
 ### No number > 0
 DELETE http://localhost:3000/api/notes/ew
