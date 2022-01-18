@@ -7,10 +7,14 @@ const { initialNotes, api, getAllContentFromNotes, createNote, getNotes, updateN
 beforeEach(async () => {
   await Note.deleteMany({})
 
-  initialNotes.forEach(async function (note) {
+  const noteObjects = initialNotes.map(note => new Note(note))
+  const promises = noteObjects.map(note => note.save())
+  await Promise.all(promises)
+
+  /* initialNotes.forEach(async function (note) {
     const noteM = new Note(note)
     await noteM.save()
-  })
+  }) */
 })
 
 describe('Notes', () => {
