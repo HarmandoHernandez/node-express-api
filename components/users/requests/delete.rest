@@ -1,0 +1,7 @@
+DELETE http://localhost:3000/api/users/61ddf5b7d1c8c9d90602cb8f
+
+### No number > 0
+DELETE http://localhost:3000/api/users/ew
+
+### No found
+DELETE http://localhost:3000/api/users/99

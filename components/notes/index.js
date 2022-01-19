@@ -1,13 +1,13 @@
-const express = require('express')
-const router = express.Router()
+const router = require('express').Router()
 const Note = require('../../models/Note')
+const User = require('../../models/User')
 
-router.get('/api/notes', async (_req, res) => {
-  const notes = await Note.find({})
+router.get('/', async (_req, res) => {
+  const notes = await Note.find({}).populate('user', { username: 1, name: 1 })
   res.json(notes)
 })
 
-router.get('/api/notes/:id', (req, res, next) => {
+router.get('/:id', (req, res, next) => {
   const id = req.params.id
 
   Note.findById(id)
@@ -23,7 +23,7 @@ router.get('/api/notes/:id', (req, res, next) => {
     })
 })
 
-router.delete('/api/notes/:id', (req, res, next) => {
+router.delete('/:id', (req, res, next) => {
   const id = req.params.id
 
   Note.findByIdAndDelete(id)
@@ -35,7 +35,7 @@ router.delete('/api/notes/:id', (req, res, next) => {
     })
 })
 
-router.put('/api/notes/:id', (req, res) => {
+router.put('/:id', (req, res) => {
   const { id } = req.params
   const note = req.body
 
@@ -50,33 +50,29 @@ router.put('/api/notes/:id', (req, res) => {
     })
 })
 
-router.post('/api/notes', async (req, res, next) => {
-  const note = req.body
+router.post('/', async (req, res, next) => {
+  const { content, important = false, userId } = req.body
 
-  if (!note.content) {
+  const user = await User.findById(userId)
+
+  if (!content) {
     return res.status(400).json({
       error: 'note.content is missing'
     })
   }
   const newNote = new Note({
-    content: note.content,
-    important: typeof note.important !== 'undefined' ? note.important : false,
-    date: new Date().toISOString()
+    content: content,
+    important,
+    date: new Date().toISOString(),
+    user: user._id
   })
-  // Guardar nota en BD
-  /*  newNote.save()
-      .then(result => {
-        res.status(201).json(result)
-      })
-      .catch(err => {
-        res.status(404).json({
-          error: err
-        })
-      }) */
-
   try {
-    const saveNote = await newNote.save()
-    res.status(201).json(saveNote)
+    const savedNote = await newNote.save()
+
+    user.notes = user.notes.concat(savedNote._id)
+    await user.save()
+
+    res.status(201).json(savedNote)
   } catch (error) {
     next(error)
   }

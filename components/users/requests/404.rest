@@ -1,0 +1,7 @@
+GET http://localhost:3000/api/userssds
+
+###
+DELETE http://localhost:3000/api/userssds
+
+###
+POST http://localhost:3000/api/userssds

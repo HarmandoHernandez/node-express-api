@@ -6,6 +6,7 @@ const cors = require('cors')
 const notFound = require('./middleware/notFound')
 const handleErrors = require('./middleware/handleErrors')
 const apiNotes = require('./components/notes/index')
+const apiUsers = require('./components/users/index')
 // Crear servidor
 const app = express()
 // Soporte request json
@@ -17,7 +18,8 @@ app.use(cors())
 // Acceso a estaticos
 app.use(express.static('public'))
 
-app.use(apiNotes)
+app.use('/api/users', apiUsers)
+app.use('/api/notes', apiNotes)
 
 app.use(handleErrors)
 app.use(notFound)

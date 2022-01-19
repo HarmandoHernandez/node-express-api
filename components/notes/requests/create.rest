@@ -3,7 +3,8 @@ POST http://localhost:3000/api/notes/
 Content-Type: application/json; charset=utf-8
 
 {
-    "content": "Me tengo que suscribir a @midudev en Youtube"
+    "content": "Me tengo que suscribir a @midudev en Youtube",
+    "userId": "61e73f62de4152c348765048"
 }
 
 ### With content and important
@@ -12,7 +13,8 @@ Content-Type: application/json; charset=utf-8
 
 {
     "content": "Tengo que estudiar las clases del Fullstack Bootcampo",
-    "important": true
+    "important": true,
+    "userId": "61e73f62de4152c348765048"
 }
 
 ### Empty

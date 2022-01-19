@@ -1,0 +1,8 @@
+### All notes
+http://localhost:3000/api/users
+
+### Individual note
+http://localhost:3000/api/users/61e73f62de4152c348765048
+
+### Individual note BadFormat ID
+http://localhost:3000/api/users/61dddab130e170055fe1eae

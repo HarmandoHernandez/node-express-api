@@ -1,0 +1,28 @@
+### With content
+POST http://localhost:3000/api/users/
+Content-Type: application/json; charset=utf-8
+
+{
+    "username": "harmandohdez",
+    "name": "Armando",
+    "password": "IW4@"
+}
+
+### With content and important
+POST http://localhost:3000/api/users/
+Content-Type: application/json; charset=utf-8
+
+{
+    "username": "harmandohdez",
+    "name": "Armando",
+    "password": "IW4@"
+}
+
+### Empty
+POST http://localhost:3000/api/users/
+Content-Type: application/json; charset=utf-8
+
+{}
+
+### No found
+POST http://localhost:3000/api/users/99
